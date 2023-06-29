@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EShop.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using EShop.Domain.Entities.Account;
 
 namespace EShop.Web.Controllers
 {
@@ -12,31 +14,24 @@ namespace EShop.Web.Controllers
         //}
 
 
-        //private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
-        //public HomeController(IUserService userService)
-        //{
-        //    _userService= userService;
-        //}
+        public HomeController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
-       
-        
+
+
         public IActionResult Index()
         {
-
-            //var user = new User
-            //{
-            //    FirstName = "Reyhaneh",
-            //    LastName = "Khalili",
-            //    Email = "test@test.com",
-            //    Password = "123456",
-            //    Avatar = null
-            //};
-
-            //_context.Users.Add(user);
-            //_context.SaveChanges();
-
-            //_userService.AddUser();
+            _userService.RegisterUser(new User()
+            {
+                FirstName = "Reyhaneh",
+                LastName = "Khalili",
+                Email = "test@test.com",
+                Password = "123"
+            });
 
             return View();
         }

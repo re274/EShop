@@ -12,7 +12,6 @@
     <Folder Include="Generators\" />
     <Folder Include="Security\" />
     <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implementations\" />
     <Folder Include="StaticItems\" />
   </ItemGroup>
 

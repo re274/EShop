@@ -6,6 +6,7 @@ namespace EShop.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        //CRUD operation only
 
         #region constructor
         private readonly EShopDbContext _context;
