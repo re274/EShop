@@ -4,6 +4,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using EShop.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
+using EShop.Application.Services.Interfaces;
+using EShop.Application.Services.Implementations;
+using EShop.Domain.IRepositories;
+using EShop.Data.Repositories;
 
 #region service pool
 
@@ -22,6 +26,8 @@ builder.Configuration.GetConnectionString("DefaultConnection")
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 #endregion
 
 
