@@ -25,13 +25,7 @@ namespace EShop.Web.Controllers
 
         public IActionResult Index()
         {
-            _userService.RegisterUser(new User()
-            {
-                FirstName = "Reyhaneh",
-                LastName = "Khalili",
-                Email = "test@test.com",
-                Password = "123"
-            });
+
 
             return View();
         }

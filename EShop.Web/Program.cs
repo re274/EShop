@@ -1,13 +1,13 @@
+using EShop.Application.Services.Implementations;
+using EShop.Application.Services.Interfaces;
+using EShop.Data.DBContext;
+using EShop.Data.Repositories;
+using EShop.Domain.IRepositories;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using EShop.Data.DBContext;
-using Microsoft.EntityFrameworkCore;
-using EShop.Application.Services.Interfaces;
-using EShop.Application.Services.Implementations;
-using EShop.Domain.IRepositories;
-using EShop.Data.Repositories;
 
 #region service pool
 
@@ -15,8 +15,8 @@ using EShop.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+//Add services to the container.
+//Considered EShopDbContext as the database schema
 builder.Services.AddDbContext<EShopDbContext>(options =>
 options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")

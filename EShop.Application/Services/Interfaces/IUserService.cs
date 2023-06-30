@@ -9,9 +9,7 @@ namespace EShop.Application.Services.Interfaces
 {
     public interface IUserService
     {
-        #region account
-        bool RegisterUser(User user);
-        #endregion
+
     }
 }
 

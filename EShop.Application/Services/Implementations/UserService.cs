@@ -19,18 +19,5 @@ namespace EShop.Application.Services.Implementations
         }
         #endregion
 
-        #region account
-        public bool RegisterUser(User user)
-        {
-            //add user data to database
-            _userRepository.AddUser(user);
-            _userRepository.SaveChanges();
-
-            //send activation email/sms to user
-
-            //return result
-            return true;
-        }
-        #endregion    
     }
 }
