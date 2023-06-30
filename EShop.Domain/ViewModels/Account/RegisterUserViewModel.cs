@@ -20,7 +20,7 @@ namespace EShop.Domain.ViewModels.Account
         [Display(Name = "تکرار کلمه عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(150, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "کلمه های عبور مغایرت دارند")]
         public string ConfirmPassword { get; set; }
     }
 }
