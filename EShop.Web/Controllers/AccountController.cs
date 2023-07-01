@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EShop.Domain.ViewModels.Account;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Web.Controllers
 {
@@ -7,6 +8,13 @@ namespace EShop.Web.Controllers
         #region register
         [HttpGet("register")]
         public IActionResult Register()
+        {
+            return View();
+        }
+
+
+        [HttpPost("register")]
+        public IActionResult Register(RegisterUserViewModel register)
         {
             return View();
         }
