@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : SiteBaseController
     {
         #region constructor
         private readonly IUserService _userService;
@@ -33,13 +33,17 @@ namespace EShop.Web.Controllers
                 switch (res)
                 {
                     case RegisterUserResult.NotSentEmail:
+                        TempData[SuccessMessage] = "ثبت نام شما با موفقیت انجام شد";
+                        TempData[WarningMessage] = "ایمیل فعالسازی برای شما ارسال نشد";
                         break;
                     case RegisterUserResult.DuplicateEmail:
+                        TempData[WarningMessage] = "این ایمیل قبلا استفاده شده است";
+                        ModelState.AddModelError("Email", "ایمیل استفاده شده، تکراری می باشد");
                         break;
                     case RegisterUserResult.Success:
-                        break;
-
-
+                        TempData[SuccessMessage] = "ثبت نام شما با موفقیت انجام شد";
+                        TempData[InfoMessage] = "ایمیلی حاوی لینک فعالسازی برای شما ارسال شده است";
+                        return RedirectToAction("Login");
                 }
             }
             return View();
