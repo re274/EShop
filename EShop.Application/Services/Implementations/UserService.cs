@@ -1,6 +1,8 @@
 ﻿using EShop.Application.Services.Interfaces;
+using EShop.Data.Repositories;
 using EShop.Domain.Entities.Account;
 using EShop.Domain.IRepositories;
+using EShop.Domain.ViewModels.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,25 @@ namespace EShop.Application.Services.Implementations
         {
             _userRepository = userRepository;
         }
+        #endregion
+
+        #region account
+
+        public void RegisterUser(RegisterUserViewModel register)
+        {
+            //add user to database
+            var user = new User
+            {
+                Email = register.Email,
+                Password = register.Password,
+            };
+            _userRepository.AddUser(user);
+            _userRepository.SaveChanges();
+
+            // TODO: send email to user(activation code)
+
+        }
+
         #endregion
 
     }
