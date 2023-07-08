@@ -25,6 +25,7 @@ namespace EShop.Application.Services.Implementations
 
         public RegisterUserResult RegisterUser(RegisterUserViewModel register)
         {
+            //check user is unique
             if(_userRepository.IsUserExistsByEmail(register.Email))
                 return RegisterUserResult.DuplicateEmail;
 
