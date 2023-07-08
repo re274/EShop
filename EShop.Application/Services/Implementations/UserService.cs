@@ -25,12 +25,16 @@ namespace EShop.Application.Services.Implementations
 
         public RegisterUserResult RegisterUser(RegisterUserViewModel register)
         {
+            if(_userRepository.IsUserExistsByEmail(register.Email))
+                return RegisterUserResult.DuplicateEmail;
+
             //add user to database
             var user = new User
             {
-                Email = register.Email,
+                Email = register.Email.ToLower().Trim(),
                 Password = register.Password,
                 RegisterDate = DateTime.Now,
+                ActiveCode = Guid.NewGuid().ToString("N"),
             };
             _userRepository.AddUser(user);
             _userRepository.SaveChanges();

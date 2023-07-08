@@ -1,6 +1,7 @@
 ﻿using EShop.Domain.IRepositories;
 using EShop.Domain.Entities.Account;
 using EShop.Data.DBContext;
+using System.Linq;
 
 namespace EShop.Data.Repositories
 {
@@ -21,6 +22,11 @@ namespace EShop.Data.Repositories
         public void AddUser(User user)
         {
             _context.Users.Add(user); //.Users Optional
+        }
+
+        public bool IsUserExistsByEmail(string email)
+        {
+            return _context.Users.Any(s=>s.Email == email.ToLower().Trim());
         }
         #endregion
 
