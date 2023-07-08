@@ -36,6 +36,7 @@ namespace EShop.Application.Services.Implementations
 
             // TODO: send email to user(activation code)
 
+            return RegisterUserResult.Success;
         }
 
         #endregion

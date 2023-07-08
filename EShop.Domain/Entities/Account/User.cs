@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using EShop.Domain.Entities.Base;
 
 namespace EShop.Domain.Entities.Account
 {
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
+        #region properties
 
         [MaxLength(150, ErrorMessage = "نام وارد شده نمی تواند بیش از 150 کاراکتر باشد")]
         public string FirstName { get; set; }
@@ -36,5 +35,16 @@ namespace EShop.Domain.Entities.Account
 
         [MaxLength(200)]
         public string Avatar { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public DateTime RegisterDate { get; set; }
+
+        #endregion
+
+        #region relations
+
+        #endregion
+
     }
 }
