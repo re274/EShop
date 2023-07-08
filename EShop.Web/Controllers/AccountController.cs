@@ -27,6 +27,21 @@ namespace EShop.Web.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterUserViewModel register)
         {
+            if (ModelState.IsValid)
+            {
+                var res = _userService.RegisterUser(register);
+                switch (res)
+                {
+                    case RegisterUserResult.NotSentEmail:
+                        break;
+                    case RegisterUserResult.DuplicateEmail:
+                        break;
+                    case RegisterUserResult.Success:
+                        break;
+
+
+                }
+            }
             return View();
         }
         #endregion
