@@ -30,6 +30,7 @@ namespace EShop.Application.Services.Implementations
             {
                 Email = register.Email,
                 Password = register.Password,
+                RegisterDate = DateTime.Now,
             };
             _userRepository.AddUser(user);
             _userRepository.SaveChanges();
