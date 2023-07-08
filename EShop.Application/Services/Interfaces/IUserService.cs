@@ -11,7 +11,7 @@ namespace EShop.Application.Services.Interfaces
     public interface IUserService
     {
         #region account
-        void RegisterUser(RegisterUserViewModel register);
+        RegisterUserResult RegisterUser(RegisterUserViewModel register);
         #endregion
     }
 }

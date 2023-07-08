@@ -23,7 +23,7 @@ namespace EShop.Application.Services.Implementations
 
         #region account
 
-        public void RegisterUser(RegisterUserViewModel register)
+        public RegisterUserResult RegisterUser(RegisterUserViewModel register)
         {
             //add user to database
             var user = new User
