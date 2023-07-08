@@ -36,9 +36,14 @@ namespace EShop.Domain.Entities.Account
         [MaxLength(200)]
         public string Avatar { get; set; }
 
+        [MaxLength(300, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
+        public string ActiveCode { get; set; }
+
         public bool IsActive { get; set; }
 
         public DateTime RegisterDate { get; set; }
+
+        public bool IsSuperUser { get; set; }
 
         #endregion
 
