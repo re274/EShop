@@ -49,5 +49,16 @@ namespace EShop.Web.Controllers
             return View();
         }
         #endregion
+
+
+        #region login
+
+        [HttpGet("login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EShop.Domain.Entities.Account;
+﻿using EShop.Domain.Entities.Account;
 using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Data.DBContext
