@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 #region service pool
 
@@ -28,8 +30,15 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+#region Encoder
+
+builder.Services.AddSingleton<HtmlEncoder>(
+    HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
+
 #endregion
 
+#endregion
 
 #region middlewares
 
@@ -59,3 +68,5 @@ app.MapControllerRoute(
 app.Run();
 
 #endregion
+
+

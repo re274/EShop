@@ -16,7 +16,8 @@
     @RenderBody()
     @await Component.InvokeAsync("SiteFooter")
     <partial name="_FooterReferences" />
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_SiteMessages" />
+    @RenderSection("FooterScripts",false)
 
 </body>
 
