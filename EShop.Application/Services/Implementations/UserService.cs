@@ -45,6 +45,12 @@ namespace EShop.Application.Services.Implementations
             return RegisterUserResult.Success;
         }
 
+
+        public LoginUserResult IsUserExistsForLogin(LoginUserViewModel login)
+        {
+            throw new NotImplementedException();
+        } 
+
         #endregion
 
     }

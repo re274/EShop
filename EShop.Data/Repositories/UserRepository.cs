@@ -26,8 +26,14 @@ namespace EShop.Data.Repositories
 
         public bool IsUserExistsByEmail(string email)
         {
-            return _context.Users.Any(s=>s.Email == email.ToLower().Trim());
+            return _context.Users.Any(s => s.Email == email.ToLower().Trim());
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return _context.Users.SingleOrDefault(s => s.Email == email);
+        }
+
         #endregion
 
 

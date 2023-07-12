@@ -62,6 +62,10 @@ namespace EShop.Web.Controllers
         [HttpPost("login"), ValidateAntiForgeryToken]
         public IActionResult Login(LoginUserViewModel login)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View(login);
         }
 

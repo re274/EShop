@@ -10,6 +10,8 @@ namespace EShop.Domain.IRepositories
         #region user
         void AddUser(User user);
         bool IsUserExistsByEmail(string email);
+        User GetUserByEmail(string email);
+
         #endregion
 
     }

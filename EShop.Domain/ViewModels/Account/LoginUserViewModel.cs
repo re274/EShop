@@ -26,4 +26,12 @@ namespace EShop.Domain.ViewModels.Account
 
         public bool RememberMe { get; set; }
     }
+
+    public enum LoginUserResult
+    {
+        Success,
+        NotActive,
+        WrongData,
+        IsBan
+    }
 }

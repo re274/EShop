@@ -12,6 +12,7 @@ namespace EShop.Application.Services.Interfaces
     {
         #region account
         RegisterUserResult RegisterUser(RegisterUserViewModel register);
+        LoginUserResult IsUserExistsForLogin(LoginUserViewModel login);
         #endregion
     }
 }
