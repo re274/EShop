@@ -24,7 +24,7 @@ namespace EShop.Web.Controllers
         }
 
 
-        [HttpPost("register")]
+        [HttpPost("register"), ValidateAntiForgeryToken]
         public IActionResult Register(RegisterUserViewModel register)
         {
             if (ModelState.IsValid)
@@ -43,10 +43,10 @@ namespace EShop.Web.Controllers
                     case RegisterUserResult.Success:
                         TempData[SuccessMessage] = "ثبت نام شما با موفقیت انجام شد";
                         TempData[InfoMessage] = "ایمیلی حاوی لینک فعالسازی برای شما ارسال شده است";
-                        return RedirectToAction("Login");
+                        return RedirectToAction("Login", "Account");
                 }
             }
-            return View();
+            return View(register);
         }
         #endregion
 
@@ -59,10 +59,10 @@ namespace EShop.Web.Controllers
             return View();
         }
 
-        [HttpGet("login")]
+        [HttpPost("login"), ValidateAntiForgeryToken]
         public IActionResult Login(LoginUserViewModel login)
         {
-            return View();
+            return View(login);
         }
 
         #endregion
