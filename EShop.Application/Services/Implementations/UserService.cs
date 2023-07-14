@@ -26,7 +26,7 @@ namespace EShop.Application.Services.Implementations
         public RegisterUserResult RegisterUser(RegisterUserViewModel register)
         {
             //check user is unique
-            if(_userRepository.IsUserExistsByEmail(register.Email))
+            if (_userRepository.IsUserExistsByEmail(register.Email))
                 return RegisterUserResult.DuplicateEmail;
 
             //add user to database
@@ -48,8 +48,17 @@ namespace EShop.Application.Services.Implementations
 
         public LoginUserResult IsUserExistsForLogin(LoginUserViewModel login)
         {
-            throw new NotImplementedException();
-        } 
+            var user = _userRepository.GetUserByEmail(login.Email);
+
+            if (user == null) return LoginUserResult.WrongData;
+
+            if (user.Password != login.Password) return LoginUserResult.WrongData;
+
+            if (!user.IsActive) return LoginUserResult.NotActive;
+
+            return LoginUserResult.Success;
+
+        }
 
         #endregion
 
