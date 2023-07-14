@@ -64,7 +64,23 @@ namespace EShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var res = _userService.IsUserExistsForLogin(login);
+                switch (res)
+                {
+                    case LoginUserResult.WrongData:
+                        TempData[WarningMessage] = "اطلاعات وارد شده صحیح نمی باشد";
+                        break;
+                    case LoginUserResult.NotActive:
+                        TempData[WarningMessage] = "حساب کاربری شما فعال نشده است";
+                        break;
+                    case LoginUserResult.IsBan:
+                        TempData[ErrorMessage] = "حساب کاربری شما مسدود شده است";
+                        break;
+                    case LoginUserResult.Success:
+                        // login user
+                        return RedirectToAction("Index", "Home");
 
+                }
             }
             return View(login);
         }
