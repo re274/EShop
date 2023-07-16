@@ -60,6 +60,11 @@ namespace EShop.Application.Services.Implementations
 
         }
 
+        public User GetUserByEmail(string email)
+        {
+            return _userRepository.GetUserByEmail(email.ToLower().Trim());
+        }
+
         #endregion
 
     }

@@ -79,7 +79,6 @@ namespace EShop.Web.Controllers
                     case LoginUserResult.Success:
                         // login user
                         return RedirectToAction("Index", "Home");
-
                 }
             }
             return View(login);

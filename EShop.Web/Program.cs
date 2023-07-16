@@ -3,11 +3,13 @@ using EShop.Application.Services.Interfaces;
 using EShop.Data.DBContext;
 using EShop.Data.Repositories;
 using EShop.Domain.IRepositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
@@ -25,6 +27,19 @@ builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 
 //builder.Services.AddTransient<IUserService, UserService>(); //Ioc implementations
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+    options.LoginPath = "/login";
+    options.LogoutPath = "/logout";
+    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
 
 builder.Services.AddControllersWithViews();
 
