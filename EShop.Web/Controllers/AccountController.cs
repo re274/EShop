@@ -61,6 +61,7 @@ namespace EShop.Web.Controllers
         [HttpGet("login")]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated) return Redirect("/");
             return View();
         }
 

@@ -31,6 +31,9 @@
                     <h2>ورود</h2>
                     <form method="post" asp-controller="Account" asp-action="Login">
                         <p>
+                            @User.Identity.IsAuthenticated
+                        </p>
+                        <p>
                             <label>آدرس ایمیل<span>*</span></label>
                             <input asp-for="Email">
                         </p>
@@ -50,9 +53,9 @@
                             <input type="checkbox" asp-for="RememberMe">
                         </p>
                         <p>
-                        <div class="login_submit">
-                            <button type="submit">ورود</button>
-                        </div>
+                            <div class="login_submit">
+                                <button type="submit">ورود</button>
+                            </div>
                     </form>
                 </div>
             </div>
