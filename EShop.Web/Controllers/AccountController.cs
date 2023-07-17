@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace EShop.Web.Controllers
 {
@@ -25,6 +26,7 @@ namespace EShop.Web.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated) return Redirect("/");
             return View();
         }
 
@@ -103,6 +105,17 @@ namespace EShop.Web.Controllers
                 }
             }
             return View(login);
+        }
+
+        #endregion
+
+
+        #region forgot password 
+
+        [HttpGet("forgot-pass")]
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
 
         #endregion
