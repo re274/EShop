@@ -1,7 +1,12 @@
 ﻿using EShop.Application.Services.Interfaces;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Account;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace EShop.Web.Controllers
 {
@@ -60,7 +65,7 @@ namespace EShop.Web.Controllers
         }
 
         [HttpPost("login"), ValidateAntiForgeryToken]
-        public IActionResult Login(LoginUserViewModel login)
+        public async Task<IActionResult> Login(LoginUserViewModel login)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +82,22 @@ namespace EShop.Web.Controllers
                         TempData[ErrorMessage] = "حساب کاربری شما مسدود شده است";
                         break;
                     case LoginUserResult.Success:
-                        // login user
+
+                        var user = _userService.GetUserByEmail(login.Email);
+
+                        var claims = new List<Claim>()
+                        {
+                            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                            new Claim(ClaimTypes.Email,user.Email.ToLower().Trim()),
+                        };
+                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var principal = new ClaimsPrincipal(identity);
+                        var properties = new AuthenticationProperties
+                        {
+                            IsPersistent = login.RememberMe
+                        };
+                        await HttpContext.SignInAsync(principal, properties);
+
                         return RedirectToAction("Index", "Home");
                 }
             }
