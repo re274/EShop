@@ -24,6 +24,11 @@ namespace EShop.Data.Repositories
             _context.Users.Add(user); //.Users Optional
         }
 
+        public void EditUser(User user)
+        {
+            _context.Users.Update(user);
+        }
+
         public bool IsUserExistsByEmail(string email)
         {
             return _context.Users.Any(s => s.Email == email.ToLower().Trim());

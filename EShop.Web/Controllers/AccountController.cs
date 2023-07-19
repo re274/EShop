@@ -118,13 +118,23 @@ namespace EShop.Web.Controllers
             return View();
         }
 
-
         [HttpPost("forgot-pass"), ValidateAntiForgeryToken]
         public IActionResult ForgotPassword(ForgotPasswordViewModel forgot)
         {
             if (ModelState.IsValid)
             {
+                var res = _userService.ForgotPassword(forgot);
 
+                switch (res)
+                {
+                    case ForgotPasswordResult.NotFoundUser:
+                        TempData[WarningMessage] = "کاربر مورد نظر یافت نشد";
+                        break;
+
+                    case ForgotPasswordResult.Success:
+                        TempData[SuccessMessage] = "ایمیل بازیابی برای شما ارسال شد";
+                        return RedirectToAction("Login", "Account");
+                }
             }
             return View(forgot);
         }

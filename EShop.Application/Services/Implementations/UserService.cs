@@ -68,12 +68,13 @@ namespace EShop.Application.Services.Implementations
 
             user.ActiveCode = Guid.NewGuid().ToString("N");
 
+            _userRepository.EditUser(user);
+            _userRepository.SaveChanges();
+
             // send forgot email for user
 
             return ForgotPasswordResult.Success;
         }
-
         #endregion
-
     }
 }
