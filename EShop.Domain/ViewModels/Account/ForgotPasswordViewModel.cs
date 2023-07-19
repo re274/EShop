@@ -11,5 +11,11 @@ namespace EShop.Domain.ViewModels.Account
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
     }
+
+    public enum ForgotPasswordResult
+    {
+        Success,
+        NotFoundUser
+    }
 }
  

@@ -122,6 +122,10 @@ namespace EShop.Web.Controllers
         [HttpPost("forgot-pass"), ValidateAntiForgeryToken]
         public IActionResult ForgotPassword(ForgotPasswordViewModel forgot)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View(forgot);
         }
 
