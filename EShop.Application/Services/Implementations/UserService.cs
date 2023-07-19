@@ -1,13 +1,8 @@
 ﻿using EShop.Application.Services.Interfaces;
-using EShop.Data.Repositories;
 using EShop.Domain.Entities.Account;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Account;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EShop.Application.Services.Implementations
 {
@@ -63,6 +58,19 @@ namespace EShop.Application.Services.Implementations
         public User GetUserByEmail(string email)
         {
             return _userRepository.GetUserByEmail(email.ToLower().Trim());
+        }
+
+        public ForgotPasswordResult ForgotPassword(ForgotPasswordViewModel forgot)
+        {
+            var user = _userRepository.GetUserByEmail(forgot.Email.ToLower().Trim());
+
+            if (user == null) return ForgotPasswordResult.NotFoundUser;
+
+            user.ActiveCode = Guid.NewGuid().ToString("N");
+
+            // send forgot email for user
+
+            return ForgotPasswordResult.Success;
         }
 
         #endregion

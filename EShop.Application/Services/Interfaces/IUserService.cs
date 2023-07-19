@@ -14,6 +14,8 @@ namespace EShop.Application.Services.Interfaces
         RegisterUserResult RegisterUser(RegisterUserViewModel register);
         LoginUserResult IsUserExistsForLogin(LoginUserViewModel login);
         User GetUserByEmail(string email);
+        ForgotPasswordResult ForgotPassword(ForgotPasswordViewModel forgot);
+
         #endregion
     }
 }
