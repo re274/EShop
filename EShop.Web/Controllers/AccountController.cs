@@ -118,6 +118,13 @@ namespace EShop.Web.Controllers
             return View();
         }
 
+
+        [HttpPost("forgot-pass"), ValidateAntiForgeryToken]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel forgot)
+        {
+            return View(forgot);
+        }
+
         #endregion
     }
 }
