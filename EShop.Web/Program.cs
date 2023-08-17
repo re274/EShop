@@ -1,8 +1,5 @@
-using EShop.Application.Services.Implementations;
-using EShop.Application.Services.Interfaces;
 using EShop.Data.DBContext;
-using EShop.Data.Repositories;
-using EShop.Domain.IRepositories;
+using EShop.Ioc;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -43,8 +40,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+DependencyContainer.ConfigureServiceCollection(builder.Services);
 
 #region Encoder
 
