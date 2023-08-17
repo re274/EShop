@@ -53,7 +53,6 @@ builder.Services.AddSingleton<HtmlEncoder>(
 
 #region middlewares
 
-
 //Configure method
 var app = builder.Build();
 
@@ -73,6 +72,11 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+// route prefix
+app.MapControllerRoute(
+  name: "areas",
+  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
