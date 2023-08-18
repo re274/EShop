@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Web.Areas.User.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("User")]
     [Route("user")]
     public class UserBaseController : Controller { }
