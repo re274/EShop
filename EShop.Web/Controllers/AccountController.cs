@@ -2,6 +2,7 @@
 using EShop.Domain.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -110,6 +111,7 @@ namespace EShop.Web.Controllers
         #region forgot password 
 
         [HttpGet("forgot-pass")]
+        [Authorize]
         public IActionResult ForgotPassword()
         {
             return View();

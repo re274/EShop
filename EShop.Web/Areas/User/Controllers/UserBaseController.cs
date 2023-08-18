@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Web.Areas.User.Controllers
 {
-    public class UserBaseController : Controller
-    {
-
-    }
+    [Authorize]
+    [Area("User")]
+    [Route("user")]
+    public class UserBaseController : Controller { }
 }
