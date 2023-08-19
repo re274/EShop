@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EShop.Domain.Entities.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
-using EShop.Domain.Entities.Base;
 
 namespace EShop.Domain.Entities.Account
 {
