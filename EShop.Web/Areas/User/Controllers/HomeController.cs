@@ -8,5 +8,11 @@ namespace EShop.Web.Areas.User.Controllers
         {
             return View();
         }
-    }
+
+        [HttpGet("edit-profile")]
+		public IActionResult EditProfile()
+		{
+			return View();
+		}
+	}
 }
