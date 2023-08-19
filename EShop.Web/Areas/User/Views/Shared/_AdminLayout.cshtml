@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="no-js" lang="fa" dir="rtl">
 
 <head>
@@ -12,8 +11,52 @@
 </head>
 
 <body>
+
     @await Component.InvokeAsync("SiteHeader")
-    @RenderBody()
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li>@ViewData["Title"]</li>
+                            @RenderSection("BreadCrumb",false)
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <!-- my account start  -->
+    <section class="main_content_area">
+        <div class="container">
+            <div class="account_dashboard">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <div class="dashboard_tab_button">
+                            <ul class="nav flex-column dashboard-list">
+                                <li><a href="#dashboard" class="nav-link active">داشبورد</a></li>
+                                <li> <a asp-area="User" asp-controller="Home" asp-action="EditProfile" href="#orders" class="nav-link">ویرایش اطلاعات کاربری</a></li>
+                                <li><a href="#downloads" class="nav-link">دریافت ها</a></li>
+                                <li><a href="#address" class="nav-link">آدرس ها</a></li>
+                                <li><a href="#account-details" class="nav-link">جزئیات حساب</a></li>
+                                <li><a href="login.html" class="nav-link">خروج</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- my account end   -->
     @await Component.InvokeAsync("SiteFooter")
     <partial name="_FooterReferences" />
     <partial name="_SiteMessages" />
