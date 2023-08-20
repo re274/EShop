@@ -1,6 +1,8 @@
-﻿namespace EShop.Domain.Entities.Products
+﻿using EShop.Domain.Entities.Base;
+
+namespace EShop.Domain.Entities.Products
 {
-    public class ProductSelectedCategory
+    public class ProductSelectedCategory : BaseEntity
     {
         #region properties
 
