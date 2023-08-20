@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace EShop.Domain.Entities.Products
+﻿namespace EShop.Domain.Entities.Products
 {
     public class ProductSelectedCategory
     {
@@ -11,14 +9,11 @@ namespace EShop.Domain.Entities.Products
 
         #endregion
 
-
         #region relations
-
         // Product : name of the relationship
         // [ForeignKey("ProductId")] : با توجه به پراپرتی بالا، خودش میفهمه
         public Product Product { get; set; }
         public ProductCategory ProductCategory { get; set; }
-
         #endregion
     }
 }

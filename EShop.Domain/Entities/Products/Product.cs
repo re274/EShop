@@ -1,5 +1,5 @@
 ﻿using EShop.Domain.Entities.Base;
-using System;
+using System.Collections.Generic;
 
 namespace EShop.Domain.Entities.Products
 {
@@ -13,6 +13,10 @@ namespace EShop.Domain.Entities.Products
         public int Price { get; set; }
         public bool IsActive { get; set; }
 
+        #endregion
+
+        #region relations
+        public ICollection<ProductSelectedCategory> ProductSelectedCategories { get; set; }
         #endregion
 
     }

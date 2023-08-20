@@ -1,4 +1,5 @@
 ﻿using EShop.Domain.Entities.Base;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EShop.Domain.Entities.Products
@@ -18,11 +19,12 @@ namespace EShop.Domain.Entities.Products
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(150, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
         public string UrlName { get; set; }
-        public bool IsActive { get; set; }
 
+        public bool IsActive { get; set; }
         #endregion
 
         #region relations
+        public ICollection<ProductSelectedCategory> ProductSelectedCategories { get; set; }
         #endregion
     }
 }
