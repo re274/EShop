@@ -1,6 +1,4 @@
 ﻿using EShop.Domain.Entities.Account;
-using EShop.Domain.IRepositories;
-
 
 namespace EShop.Domain.IRepositories
 {
