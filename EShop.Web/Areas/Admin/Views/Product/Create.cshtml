@@ -1,15 +1,117 @@
-﻿
+﻿@using EShop.Domain.Entities.Products.Product
+@model EShop.Domain.ViewModels.Admin.Products.CreateProductViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "ثبت محصول جدید";
+    var categories = ViewBag.ProductCategories as List<ProductCategory>;
 }
 
-<!DOCTYPE html>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-</body>
-</html>
+<form asp-area="Admin" asp-controller="Product" asp-action="Create" method="post">
+    <div class="row clearfix">
+        <div class="col-lg-8 col-sm-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>@ViewData["Title"]</strong> </h2>
+                </div>
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>نام محصول</label>
+                                        <input asp-for="Title" class="form-control" placeholder="نام محصول">
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>قیمت محصول</label>
+                                        <input asp-for="Price" class="form-control" placeholder="قیمت محصول">
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>توضیحات مختصر</label>
+                                        <textarea rows="5" asp-for="ShortDescription" class="form-control"></textarea>
+                                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>توضیحات اصلی</label>
+                                        <textarea rows="5" asp-for="Description" class="form-control"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="submit" class="btn btn-success btn-block">ثبت محصول</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>تصویر محصول</strong> </h2>
+                </div>
+                <div class="body">
+                </div>
+            </div>
+            <div class="card">
+                <div class="header">
+                    <h2><strong>دسته بندی ها</strong> </h2>
+                </div>
+                <div class="body">
+                    @if (categories != null && categories.Any())
+                    {
+                        <ul>
+                            @foreach (var mainCategory in categories.Where(s => s.ParentId == null))
+                            {
+                                <li>
+                                    <div class="checkbox">
+                                        <input id="main_category_@mainCategory.Id" name="@nameof(Model.SelectedCategories)" value="@mainCategory.Id" type="checkbox">
+                                        <label for="main_category_@mainCategory.Id">
+                                            @mainCategory.Title
+                                        </label>
+                                    </div>
+                                    @if (categories.Any(s => s.ParentId == mainCategory.Id))
+                                    {
+                                        <ul>
+                                            @foreach (var subCategory in categories.Where(s => s.ParentId == mainCategory.Id))
+                                            {
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <input id="sub_category_@subCategory.Id" name="@nameof(Model.SelectedCategories)" value="@subCategory.Id" type="checkbox">
+                                                        <label for="sub_category_@subCategory.Id">
+                                                            @subCategory.Title
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,13 +1,10 @@
-﻿using EShop.Domain.Entities.Base;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace EShop.Domain.Entities.Products
+namespace EShop.Domain.ViewModels.Admin.Products
 {
-    public class Product : BaseEntity
+    public class CreateProductViewModel
     {
-        #region properties
-
         [Display(Name = "عنوان")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(300, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
@@ -22,22 +19,11 @@ namespace EShop.Domain.Entities.Products
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Description { get; set; }
 
-        [Display(Name = "نام تصویر")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(360, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
-        public string ImageName { get; set; }
-
         [Display(Name = "قیمت")]
         public int Price { get; set; }
 
         public bool IsActive { get; set; }
 
-        #endregion
-
-
-        #region relations
-        public ICollection<ProductSelectedCategory> ProductSelectedCategories { get; set; }
-        #endregion
-
+        public IFormFile ProductImage { get; set; }
     }
 }
