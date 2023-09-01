@@ -16,7 +16,7 @@ namespace EShop.Ioc
 
             // service dependencies
             services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductService, ProductService>();
         }
 
     }

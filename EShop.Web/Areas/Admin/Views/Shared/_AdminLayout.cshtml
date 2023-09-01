@@ -216,6 +216,8 @@
 
     @await Component.InvokeAsync("AdminRightSide")
 
+
+
     <!-- Chat-launcher -->
     <div class="chat-launcher"></div>
     <div class="chat-wrapper">
@@ -306,6 +308,7 @@
         </div>
     </section>
 
+
     <!-- Jquery Core Js -->
     <script src="/admin-assets/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
     <script src="/admin-assets/assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
@@ -317,6 +320,7 @@
 
     <script src="/admin-assets/assets/bundles/mainscripts.bundle.js"></script>
     <script src="/admin-assets/assets/js/pages/index.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 
 <!-- Mirrored from www.wrraptheme.com/templates/compass/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Jul 2019 10:22:48 GMT -->

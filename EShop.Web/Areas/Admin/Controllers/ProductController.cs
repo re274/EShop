@@ -13,14 +13,10 @@ namespace EShop.Web.Areas.Admin.Controllers
         }
         #endregion
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         #region create product
         public IActionResult Create()
         {
+            ViewBag.ProductCategories = _productService.GetAllActiveProductCategories();
             return View();
         }
         #endregion

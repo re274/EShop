@@ -1,6 +1,8 @@
 ﻿using EShop.Data.DBContext;
+using EShop.Domain.Entities.Products;
 using EShop.Domain.IRepositories;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EShop.Data.Repositories
 {
@@ -14,12 +16,24 @@ namespace EShop.Data.Repositories
         }
         #endregion
 
+        #region categories
+
+        public List<ProductCategory> GetAllActiveProductCategories()
+        {
+            return _context.ProductCategories.Where(c => c.IsActive && !c.IsDelete).ToList();
+        }
+
+        #endregion
+
         #region save changes
         public void SaveChanges()
         {
             _context.SaveChanges();
         }
         #endregion
+
+
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using EShop.Domain.Entities.Account;
+﻿using EShop.Domain.Entities.Products;
+using System.Collections.Generic;
 
 namespace EShop.Domain.IRepositories
 {
@@ -10,6 +11,18 @@ namespace EShop.Domain.IRepositories
         //void EditUser(User user);
         //bool IsUserExistsByEmail(string email);
         //User GetUserByEmail(string email);
+
+        #endregion
+
+
+        #region categories
+
+        List<ProductCategory> GetAllActiveProductCategories();
+
+        #endregion
+
+
+        #region products
 
         #endregion
     }

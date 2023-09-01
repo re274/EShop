@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EShop.Domain.ViewModels.Admin.Products
@@ -25,5 +26,7 @@ namespace EShop.Domain.ViewModels.Admin.Products
         public bool IsActive { get; set; }
 
         public IFormFile ProductImage { get; set; }
+
+        public List<int> SelectedCategories { get; set; }
     }
 }
