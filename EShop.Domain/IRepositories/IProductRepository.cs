@@ -14,16 +14,15 @@ namespace EShop.Domain.IRepositories
 
         #endregion
 
-
         #region categories
 
         List<ProductCategory> GetAllActiveProductCategories();
+        void AddProductSelectedCategories(List<ProductSelectedCategory> categories);
 
         #endregion
 
-
         #region products
-
+        void AddProduct(Product product);
         #endregion
     }
 }

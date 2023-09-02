@@ -23,6 +23,17 @@ namespace EShop.Data.Repositories
             return _context.ProductCategories.Where(c => c.IsActive && !c.IsDelete).ToList();
         }
 
+        public void AddProductSelectedCategories(List<ProductSelectedCategory> categories)
+        {
+            _context.AddRange(categories);
+        }
+        #endregion
+
+        #region products
+        public void AddProduct(Product product)
+        {
+            _context.Add(product);
+        }
         #endregion
 
         #region save changes
@@ -31,9 +42,6 @@ namespace EShop.Data.Repositories
             _context.SaveChanges();
         }
         #endregion
-
-
-
 
     }
 }

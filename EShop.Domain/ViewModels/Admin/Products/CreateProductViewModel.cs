@@ -21,6 +21,7 @@ namespace EShop.Domain.ViewModels.Admin.Products
         public string Description { get; set; }
 
         [Display(Name = "قیمت")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Price { get; set; }
 
         public bool IsActive { get; set; }
@@ -29,4 +30,11 @@ namespace EShop.Domain.ViewModels.Admin.Products
 
         public List<int> SelectedCategories { get; set; }
     }
+
+    public enum CreateProductResult
+    {
+        Success,
+        InvalidImage
+    }
+
 }
