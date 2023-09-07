@@ -23,4 +23,8 @@
     <ProjectReference Include="..\EShop.Ioc\EShop.Ioc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\defaults\" />
+  </ItemGroup>
+
 </Project>

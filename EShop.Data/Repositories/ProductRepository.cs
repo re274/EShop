@@ -17,7 +17,6 @@ namespace EShop.Data.Repositories
         #endregion
 
         #region categories
-
         public List<ProductCategory> GetAllActiveProductCategories()
         {
             return _context.ProductCategories.Where(c => c.IsActive && !c.IsDelete).ToList();

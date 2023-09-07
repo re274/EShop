@@ -28,8 +28,10 @@ namespace EShop.Web.Areas.Admin.Controllers
             {
                 _productService.CreateProduct(product);
             }
+
             ViewBag.ProductCategories = _productService.GetAllActiveProductCategories();
-            return View();
+
+            return View(product);
         }
         #endregion
     }

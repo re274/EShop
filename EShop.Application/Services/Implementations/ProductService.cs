@@ -18,12 +18,10 @@ namespace EShop.Application.Services.Implementations
         #endregion
 
         #region categories
-
         public List<ProductCategory> GetAllActiveProductCategories()
         {
             return _productRepository.GetAllActiveProductCategories();
         }
-
         #endregion
 
         #region products
