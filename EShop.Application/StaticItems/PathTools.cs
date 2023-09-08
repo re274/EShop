@@ -3,7 +3,7 @@
     public class PathTools
     {
         #region default
-        public static string DefaultImagePath = "/images/defaults/";
+        public static string DefaultImagePath = "/images/defaults/NoImage.jpg";
         #endregion
     }
 }
