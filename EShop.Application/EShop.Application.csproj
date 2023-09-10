@@ -15,4 +15,9 @@
     <Folder Include="StaticItems\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="LazZiya.ImageResize" Version="4.1.4" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+  </ItemGroup>
+
 </Project>

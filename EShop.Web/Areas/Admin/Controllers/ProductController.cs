@@ -26,7 +26,14 @@ namespace EShop.Web.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                _productService.CreateProduct(product);
+               var res = _productService.CreateProduct(product);
+                switch (res)
+                {
+                    case CreateProductResult.Success:
+                        break;
+                    case CreateProductResult.InvalidImage:
+                        break;
+                }
             }
 
             ViewBag.ProductCategories = _productService.GetAllActiveProductCategories();
