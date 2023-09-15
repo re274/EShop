@@ -1,8 +1,13 @@
-﻿using EShop.Application.Services.Interfaces;
+﻿using EShop.Application.Extensions;
+using EShop.Application.Security;
+using EShop.Application.Services.Interfaces;
+using EShop.Application.StaticItems;
 using EShop.Domain.Entities.Products;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Admin.Products;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace EShop.Application.Services.Implementations
@@ -41,6 +46,19 @@ namespace EShop.Application.Services.Implementations
             _productRepository.SaveChanges();
 
             // add image
+            if (product.ProductImage != null)
+            {
+                if (!product.ProductImage.IsImage()) return CreateProductResult.InvalidImage;
+
+                var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(product.ProductImage.FileName);
+                product.ProductImage.AddImageToServer(
+                    imageName,
+                    PathTools.ProductImageUploadPath,
+                    150, 150,
+                    PathTools.ProductThumbImageUploadPath);
+
+                newProduct.ImageName = imageName;
+            }
 
             // add categories
             AddProductSelectedCategories(newProduct.Id, product.SelectedCategories);
