@@ -5,5 +5,6 @@
         #region default
         public static string DefaultImagePath = "/images/defaults/NoImage.jpg";
         #endregion
+        public static string ProductImageUploadPath = "/images/products";
     }
 }
