@@ -2,16 +2,24 @@
 {
     public class BasePaging
     {
+        public BasePaging()
+        {
+            HowManyPagesShowAfterBefore = 10;
+        }
         public int Page { get; set; }
 
         public int AllEntitiesCount { get; set; }
 
-        public int AllPagesCount { get; set;}
+        public int AllPagesCount { get; set; }
 
-        public int Take { get; set;}
+        public int Take { get; set; }
 
         public int Skip { get; set; }
 
         public int HowManyPagesShowAfterBefore { get; set; }
+
+        public int StartPage { get; set; }
+
+        public int EndPage { get; set; }
     }
 }
