@@ -51,6 +51,7 @@ namespace EShop.Application.Services.Implementations
                 if (!product.ProductImage.IsImage()) return CreateProductResult.InvalidImage;
 
                 var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(product.ProductImage.FileName);
+
                 product.ProductImage.AddImageToServer(
                     imageName,
                     PathTools.ProductImageUploadPath,

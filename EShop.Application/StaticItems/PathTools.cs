@@ -9,7 +9,6 @@ namespace EShop.Application.StaticItems
         #endregion
 
         #region product
-
         public static string ProductImagePath = "/images/products/main/";
 
         public static string ProductImageUploadPath =
@@ -21,7 +20,7 @@ namespace EShop.Application.StaticItems
         public static string ProductThumbImageUploadPath =
             Path.Combine(Directory.GetCurrentDirectory(),
                 "wwwroot/images/products/thumb/");
-
         #endregion
+
     }
 }
