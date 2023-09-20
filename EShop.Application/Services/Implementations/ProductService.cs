@@ -41,8 +41,6 @@ namespace EShop.Application.Services.Implementations
                 ImageName = "",
                 Price = product.Price
             };
-            _productRepository.AddProduct(newProduct);
-            _productRepository.SaveChanges();
 
             // add image
             if (product.ProductImage != null)
@@ -59,6 +57,8 @@ namespace EShop.Application.Services.Implementations
 
                 newProduct.ImageName = imageName;
             }
+            _productRepository.AddProduct(newProduct);
+            _productRepository.SaveChanges();
 
             // add categories
             AddProductSelectedCategories(newProduct.Id, product.SelectedCategories);
@@ -86,7 +86,7 @@ namespace EShop.Application.Services.Implementations
 
         public FilterProductViewModel FilterProduct(FilterProductViewModel filter)
         {
-            return filter;
+            return _productRepository.FilterProducts(filter);
         }
         #endregion
     }

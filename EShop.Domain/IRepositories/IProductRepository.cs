@@ -1,4 +1,5 @@
 ﻿using EShop.Domain.Entities.Products;
+using EShop.Domain.ViewModels.Admin.Products;
 using System.Collections.Generic;
 
 namespace EShop.Domain.IRepositories
@@ -13,6 +14,7 @@ namespace EShop.Domain.IRepositories
 
         #region products
         void AddProduct(Product product);
+        FilterProductViewModel FilterProducts(FilterProductViewModel filter);
         #endregion
     }
 }

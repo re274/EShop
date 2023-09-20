@@ -4,7 +4,8 @@
     {
         public BasePaging()
         {
-            HowManyPagesShowAfterBefore = 10;
+            HowManyPagesShowAfterBefore = 3;
+            Take = 2;
             Page = 1;
         }
         public int Page { get; set; }

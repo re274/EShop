@@ -1,6 +1,8 @@
 ﻿using EShop.Data.DBContext;
 using EShop.Domain.Entities.Products;
 using EShop.Domain.IRepositories;
+using EShop.Domain.ViewModels.Admin.Products;
+using EShop.Domain.ViewModels.Paging;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,6 +35,24 @@ namespace EShop.Data.Repositories
         {
             _context.Add(product);
         }
+
+        public FilterProductViewModel FilterProducts(FilterProductViewModel filter)
+        {
+            var query = _context.Products.AsQueryable<Product>();
+            if (!string.IsNullOrEmpty(filter.Title))
+            {
+                query = query.Where(s => s.Title.Contains(filter.Title));
+            }
+
+            //Implementation of pagination
+            var allEntitiesCount = query.Count();
+            var pager = Pager.Build(filter.Page, allEntitiesCount, filter.Take, filter.HowManyPagesShowAfterBefore);
+            var products = query.Paging(pager).ToList();
+
+            filter.Products = products;
+            return filter;
+        }
+
         #endregion
 
         #region save changes
@@ -41,6 +61,5 @@ namespace EShop.Data.Repositories
             _context.SaveChanges();
         }
         #endregion
-
     }
 }
