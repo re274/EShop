@@ -30,7 +30,6 @@ namespace EShop.Application.Services.Implementations
         #endregion
 
         #region products
-
         public CreateProductResult CreateProduct(CreateProductViewModel product)
         {
             // add product
@@ -85,6 +84,10 @@ namespace EShop.Application.Services.Implementations
             }
         }
 
+        public FilterProductViewModel FilterProduct(FilterProductViewModel filter)
+        {
+            return filter;
+        }
         #endregion
     }
 }

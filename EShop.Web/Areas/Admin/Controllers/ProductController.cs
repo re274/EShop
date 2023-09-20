@@ -15,9 +15,9 @@ namespace EShop.Web.Areas.Admin.Controllers
         #endregion
 
         #region filter products
-        public IActionResult index()
+        public IActionResult index(FilterProductViewModel filter)
         {
-            return View();
+            return View(_productService.FilterProduct(filter));
         }
         #endregion
 

@@ -13,6 +13,7 @@ namespace EShop.Application.Services.Interfaces
 
         #region products
         CreateProductResult CreateProduct(CreateProductViewModel product);
+        FilterProductViewModel FilterProduct(FilterProductViewModel filter);
         #endregion
     }
 }
