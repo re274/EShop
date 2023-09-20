@@ -5,6 +5,7 @@
         public BasePaging()
         {
             HowManyPagesShowAfterBefore = 10;
+            Page = 1;
         }
         public int Page { get; set; }
 
