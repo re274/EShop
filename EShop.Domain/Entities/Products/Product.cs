@@ -1,4 +1,5 @@
 ﻿using EShop.Domain.Entities.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -32,6 +33,7 @@ namespace EShop.Domain.Entities.Products
 
         public bool IsActive { get; set; }
 
+        public DateTime CreateDate { get; set; }
         #endregion
 
 
