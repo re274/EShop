@@ -33,6 +33,8 @@ namespace EShop.Domain.Entities.Products
 
         public bool IsActive { get; set; }
 
+        public int Inventory { get; set; }
+
         public DateTime CreateDate { get; set; }
         #endregion
 

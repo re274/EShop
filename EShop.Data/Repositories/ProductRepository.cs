@@ -39,6 +39,25 @@ namespace EShop.Data.Repositories
         public FilterProductViewModel FilterProducts(FilterProductViewModel filter)
         {
             var query = _context.Products.AsQueryable<Product>();
+
+            switch (filter.OrderBy)
+            {
+                case FilterProductOrder.CreateDate_Asc:
+                    query = query.OrderBy(s => s.CreateDate);
+                    break;
+                case FilterProductOrder.CreateDate_Des:
+                    query = query.OrderByDescending(s => s.CreateDate);
+                    break;
+                case FilterProductOrder.Price_Asc:
+                    query = query.OrderBy(s => s.Price);
+                    break;
+                case FilterProductOrder.Price_Des:
+                    query = query.OrderByDescending(s => s.Price);
+                    break;
+                default:
+                    break;
+            }
+
             if (!string.IsNullOrEmpty(filter.Title))
             {
                 query = query.Where(s => s.Title.Contains(filter.Title));
