@@ -1,9 +1,95 @@
 ﻿@model EShop.Domain.ViewModels.Admin.Products.FilterProductViewModel;
 
-<div class="container">
+@* <div class="container">
     <div class="row">
         <div class="col-md-12">
             @Model.Page
+            <p>
+                @Model.Title
+            </p>
         </div>
     </div>
-</div>
+</div> *@
+
+<form method="get" id="filter-form" asp-area="Admin" asp-controller="Product" asp-action="Index">
+    <input type="hidden" asp-for="Page" />
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="body">
+                        <div class="form-group">
+                            <input type="text" placeholder="عنوان" class="form-control" asp-for="Title" />
+                        </div>
+                        <button type="submit" class="btn btn-dark">جستجو</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="header">
+                        <h2>ردیف های <strong>راه راه</strong> <small> برای افزودن نوارهای گورخر به هر سطر جدول در <code>&lt;tbody&gt;</code> از <code> .table-striped </code> استفاده کنید .</small> </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">عملیات</a></li>
+                                    <li><a href="javascript:void(0);">عملیات دیگر</a></li>
+                                    <li><a href="javascript:void(0);">یک چیز دیگر</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>عنوان</th>
+                                    <th>موجودی</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Products != null && Model.Products.Any())
+                                {
+                                    foreach (var product in Model.Products)
+                                    {
+                                        @* class="@(product.Inventory == 0 ? "bg-danger" : "")" *@
+                                        <tr>
+                                            <td>@product.Id</td>
+                                            <td>@product.Title</td>
+                                            @* <td>@product.Inventory</td> *@
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="col-md-4">
+                            <ul class="pagination pagination-info">
+                                @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                                {
+                                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                                        <a class="page-link" onclick="FillPageId(@i)">@i</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    <script>
+        function FillPageId(page) {
+            $('#Page').val(page);
+            $('#filter-products').submit();
+        }
+    </script>
+}

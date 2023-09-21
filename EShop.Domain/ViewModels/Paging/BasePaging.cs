@@ -4,9 +4,9 @@
     {
         public BasePaging()
         {
-            HowManyPagesShowAfterBefore = 3;
-            Take = 2;
             Page = 1;
+            Take = 5;
+            HowManyPagesShowAfterBefore = 3;
         }
         public int Page { get; set; }
 
