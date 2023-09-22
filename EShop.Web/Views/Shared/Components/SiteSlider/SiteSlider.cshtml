@@ -1,0 +1,29 @@
+﻿@model List<EShop.Domain.Entities.Site.Slider>
+
+@if (Model != null && Model.Any())
+{
+    <!--slider area start-->
+    <section class="slider_section mb-70">
+        <div class="slider_area owl-carousel">
+            @foreach (var slider in Model)
+            {
+                <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slider_content">
+                                    <h1>@slider.Title</h1>
+                                    <h2>@slider.SecondTitle</h2>
+                                    <p>@slider.ShortDescription</p>
+                                    <a class="button" href="@slider.URL">مشاهده</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </section>
+    <!--slider area end-->
+}
