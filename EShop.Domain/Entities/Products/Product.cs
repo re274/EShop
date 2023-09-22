@@ -38,10 +38,8 @@ namespace EShop.Domain.Entities.Products
         public DateTime CreateDate { get; set; }
         #endregion
 
-
         #region relations
         public ICollection<ProductSelectedCategory> ProductSelectedCategories { get; set; }
         #endregion
-
     }
 }

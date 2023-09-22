@@ -1,17 +1,7 @@
 ﻿@model EShop.Domain.ViewModels.Admin.Products.FilterProductViewModel;
 
-@* <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            @Model.Page
-            <p>
-                @Model.Title
-            </p>
-        </div>
-    </div>
-</div> *@
 
-<form method="get" id="filter-form" asp-area="Admin" asp-controller="Product" asp-action="Index">
+<form method="get" id="filter-products" asp-area="Admin" asp-controller="Product" asp-action="Index">
     <input type="hidden" asp-for="Page" />
     <div class="container">
         <div class="row clearfix">
@@ -57,11 +47,10 @@
                                 {
                                     foreach (var product in Model.Products)
                                     {
-                                        @* class="@(product.Inventory == 0 ? "bg-danger" : "")" *@
-                                        <tr>
+                                        <tr class="@(product.Inventory == 0 ? "bg-danger" : "")">
                                             <td>@product.Id</td>
                                             <td>@product.Title</td>
-                                            @* <td>@product.Inventory</td> *@
+                                            <td>@product.Inventory</td>
                                         </tr>
                                     }
                                 }
@@ -93,3 +82,4 @@
         }
     </script>
 }
+

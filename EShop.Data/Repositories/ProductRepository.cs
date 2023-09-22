@@ -3,6 +3,7 @@ using EShop.Domain.Entities.Products;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Admin.Products;
 using EShop.Domain.ViewModels.Paging;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -54,13 +55,30 @@ namespace EShop.Data.Repositories
                 case FilterProductOrder.Price_Des:
                     query = query.OrderByDescending(s => s.Price);
                     break;
-                default:
+                case FilterProductOrder.ExistsProducts:
+                    query = query.OrderByDescending(s => s.Inventory);
+                    break;
+            }
+
+            switch (filter.State)
+            {
+                case FilterProductState.All:
+                    break;
+                case FilterProductState.ActiveProducts:
+                    query = query.Where(s => s.IsActive);
+                    break;
+                case FilterProductState.DeletedProducts:
+                    query = query.Where(s => s.IsDelete);
+                    break;
+                case FilterProductState.ExistsProducts:
+                    query = query.Where(s => s.Inventory > 0);
                     break;
             }
 
             if (!string.IsNullOrEmpty(filter.Title))
             {
-                query = query.Where(s => s.Title.Contains(filter.Title));
+                query = query.Where(s => EF.Functions.Like(s.Title, $"%{filter.Title}%"));
+                //query = query.Where(s => s.Title.Contains(filter.Title));
             }
 
             //Implementation of pagination
@@ -69,7 +87,7 @@ namespace EShop.Data.Repositories
             var products = query.Paging(pager).ToList();
 
             filter.Products = products;
-            return filter;
+            return filter.SetPaging(pager);
         }
 
         #endregion

@@ -9,6 +9,7 @@ namespace EShop.Domain.ViewModels.Admin.Products
         public FilterProductViewModel()
         {
             OrderBy = FilterProductOrder.CreateDate_Asc;
+            State = FilterProductState.All;
         }
         public string Title { get; set; }
 
@@ -18,7 +19,23 @@ namespace EShop.Domain.ViewModels.Admin.Products
 
         public FilterProductOrder OrderBy { get; set; }
 
+        public FilterProductState State { get; set; }
+
         public List<Product> Products { get; set; }
+
+        public FilterProductViewModel SetPaging(BasePaging pager)
+        {
+            Page = pager.Page;
+            Take = pager.Take;
+            Skip = pager.Skip;
+            StartPage = pager.StartPage;
+            EndPage = pager.EndPage;
+            HowManyPagesShowAfterBefore=pager.HowManyPagesShowAfterBefore;
+            AllEntitiesCount = pager.AllEntitiesCount;
+            AllPagesCount= pager.AllPagesCount;
+
+            return this;
+        }
     }
 
     public enum FilterProductOrder
@@ -27,5 +44,14 @@ namespace EShop.Domain.ViewModels.Admin.Products
         CreateDate_Des,
         Price_Asc,
         Price_Des,
+        ExistsProducts
+    }
+
+    public enum FilterProductState
+    {
+        All,
+        ActiveProducts,
+        DeletedProducts,
+        ExistsProducts
     }
 }
