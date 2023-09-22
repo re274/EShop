@@ -13,11 +13,12 @@ namespace EShop.Ioc
             // repository dependencies
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISiteRepository, SiteRepository>();
 
             // service dependencies
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISiteService, SiteService>();
         }
-
     }
 }

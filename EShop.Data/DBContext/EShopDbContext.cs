@@ -1,5 +1,6 @@
 ﻿using EShop.Domain.Entities.Account;
 using EShop.Domain.Entities.Products;
+using EShop.Domain.Entities.Site;
 using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Data.DBContext
@@ -16,6 +17,7 @@ namespace EShop.Data.DBContext
 
         public DbSet<ProductSelectedCategory> ProductSelectedCategories { get; set; }
 
+        public DbSet<Slider> Sliders { get; set; }
     }
 }
 
