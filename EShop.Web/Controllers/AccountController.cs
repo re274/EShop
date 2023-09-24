@@ -20,7 +20,6 @@ namespace EShop.Web.Controllers
         }
         #endregion
 
-
         #region register
         [HttpGet("register")]
         public IActionResult Register()
@@ -55,7 +54,6 @@ namespace EShop.Web.Controllers
             return View(register);
         }
         #endregion
-
 
         #region login
 

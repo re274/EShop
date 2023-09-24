@@ -5,10 +5,8 @@ namespace EShop.Domain.Entities.Products
     public class ProductSelectedCategory : BaseEntity
     {
         #region properties
-
         public int ProductId { get; set; }
         public int ProductCategoryId { get; set; }
-
         #endregion
 
         #region relations
