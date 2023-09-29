@@ -52,7 +52,6 @@ namespace EShop.Application.Services.Implementations
             if (!user.IsActive) return LoginUserResult.NotActive;
 
             return LoginUserResult.Success;
-
         }
 
         public User GetUserByEmail(string email)
