@@ -5,6 +5,7 @@ using EShop.Application.StaticItems;
 using EShop.Domain.Entities.Products;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Admin.Products;
+using EShop.Domain.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -87,6 +88,27 @@ namespace EShop.Application.Services.Implementations
         public FilterProductViewModel FilterProduct(FilterProductViewModel filter)
         {
             return _productRepository.FilterProducts(filter);
+        }
+
+        public ProductDetailViewModel GetproductDetail(int productId)
+        {
+            var product = _productRepository.GetProductById(productId);
+
+            if (product == null || product.IsDelete || !product.IsActive)
+            {
+                return null;
+            }
+
+            return new ProductDetailViewModel
+            {
+                Id = product.Id,
+                Title = product.Title,
+                ShortDescription = product.ShortDescription,
+                Description = product.Description,
+                ImageName = product.ImageName,
+                Price = product.Price,
+                ProductCategories = _productRepository.GetProductSelectedCategories(productId)
+            };
         }
         #endregion
     }

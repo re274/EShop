@@ -9,11 +9,12 @@ namespace EShop.Domain.IRepositories
         #region categories
         List<ProductCategory> GetAllActiveProductCategories();
         void AddProductSelectedCategories(List<ProductSelectedCategory> categories);
-
+        List<ProductCategory> GetProductSelectedCategories(int productId);
         #endregion
 
         #region products
         void AddProduct(Product product);
+        Product GetProductById(int productId);
         FilterProductViewModel FilterProducts(FilterProductViewModel filter);
         #endregion
     }

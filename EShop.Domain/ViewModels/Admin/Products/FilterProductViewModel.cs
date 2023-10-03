@@ -1,5 +1,4 @@
-﻿using EShop.Domain.Entities.Products;
-using EShop.Domain.ViewModels.Paging;
+﻿using EShop.Domain.ViewModels.Paging;
 using System.Collections.Generic;
 
 namespace EShop.Domain.ViewModels.Admin.Products
@@ -21,7 +20,7 @@ namespace EShop.Domain.ViewModels.Admin.Products
 
         public FilterProductState State { get; set; }
 
-        public List<Product> Products { get; set; }
+        public List<Entities.Products.Product> Products { get; set; }
 
         public FilterProductViewModel SetPaging(BasePaging pager)
         {

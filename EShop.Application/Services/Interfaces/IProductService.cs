@@ -1,5 +1,7 @@
-﻿using EShop.Domain.Entities.Products;
+﻿using EShop.Domain.Entities.Account;
+using EShop.Domain.Entities.Products;
 using EShop.Domain.ViewModels.Admin.Products;
+using EShop.Domain.ViewModels.Product;
 using System.Collections.Generic;
 
 namespace EShop.Application.Services.Interfaces
@@ -14,6 +16,7 @@ namespace EShop.Application.Services.Interfaces
         #region products
         CreateProductResult CreateProduct(CreateProductViewModel product);
         FilterProductViewModel FilterProduct(FilterProductViewModel filter);
+        ProductDetailViewModel GetproductDetail(int productId);
         #endregion
     }
 }

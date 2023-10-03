@@ -29,6 +29,11 @@ namespace EShop.Data.Repositories
         {
             _context.AddRange(categories);
         }
+
+        public List<ProductCategory> GetProductSelectedCategories(int productId)
+        {
+            return _context.ProductSelectedCategories.Include(s => s.ProductCategory).Select(s => s.ProductCategory).ToList();
+        }
         #endregion
 
         #region products
@@ -90,6 +95,10 @@ namespace EShop.Data.Repositories
             return filter.SetPaging(pager);
         }
 
+        public Product GetProductById(int productId)
+        {
+            return _context.Products.SingleOrDefault(s => s.Id == productId);
+        }
         #endregion
 
         #region save changes
