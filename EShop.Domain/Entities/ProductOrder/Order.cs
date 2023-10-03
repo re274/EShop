@@ -1,4 +1,5 @@
-﻿using EShop.Domain.Entities.Base;
+﻿using EShop.Domain.Entities.Account;
+using EShop.Domain.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,6 +30,7 @@ namespace EShop.Domain.Entities.ProductOrder
         #endregion
 
         #region relations
+        public User User { get; set; }
         public ICollection<OrderDetail> OdrerDetails { get; set; }
         #endregion
     }

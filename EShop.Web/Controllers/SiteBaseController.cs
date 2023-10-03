@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EShop.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Web.Controllers
 {
