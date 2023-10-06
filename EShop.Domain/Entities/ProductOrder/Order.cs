@@ -20,12 +20,10 @@ namespace EShop.Domain.Entities.ProductOrder
         public int TotalPrice { get; set; }
 
         [Display(Name = "کد پیگیری")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(300, ErrorMessage = "{0} نمی تواند بیش از {1} کاراکتر باشد")]
         public string Recipient { get; set; }
 
         [Display(Name = "توضیحات")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Description { get; set; }
         #endregion
 

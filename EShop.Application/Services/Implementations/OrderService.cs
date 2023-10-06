@@ -28,6 +28,21 @@ namespace EShop.Application.Services.Implementations
             }
             return openOrder;
         }
+        public bool AddProductToUserOrder(int userId, int productId, int count)
+        {
+            var userOpenOrder = GetUserOpenOrder(userId);
+
+            var orderDetail = new OrderDetail
+            {
+                ProductId = productId,
+                OrderId = userOpenOrder.Id,
+                Count = count
+            };
+            _orderRepository.AddOrderDetail(orderDetail);
+            _orderRepository.SaveChanges();
+
+            return true;
+        }
         #endregion
     }
 }

@@ -6,9 +6,11 @@ namespace EShop.Domain.IRepositories
     {
         #region order
         Order GetUserOpenOrder(int userId);
-
         void CreateNewOrderForUser(Order order);
+        #endregion
 
+        #region order detail
+        void AddOrderDetail(OrderDetail detail);
         #endregion
     }
 }

@@ -6,6 +6,7 @@ namespace EShop.Application.Services.Interfaces
     {
         #region order
         Order GetUserOpenOrder(int userId);
+        bool AddProductToUserOrder(int userId,int productId, int count);
         #endregion
     }
 }

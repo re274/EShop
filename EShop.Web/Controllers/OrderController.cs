@@ -1,6 +1,8 @@
 ﻿using EShop.Application.Services.Interfaces;
-using EShop.Domain.Entities.Products;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
+using System.Security.Claims;
 
 namespace EShop.Web.Controllers
 {
@@ -15,29 +17,26 @@ namespace EShop.Web.Controllers
         #endregion
 
         #region add product to order
-
-        #endregion
         [HttpGet("add-product-to-order")]
         public IActionResult AddProductToOrder(int productId, int count)
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
+                var userId = Convert.ToInt32(User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.NameIdentifier).Value);
+                var res = _orderService.AddProductToUserOrder(userId, productId, count);
                 return new JsonResult(new
                 {
-                    //ProductId = productId,
-                    //Count = count
-                    message = "شما وارد سایت شده اید"
+                    message = "محصول مورد نظر با موفقیت به سبد خرید اضافه شد"
                 });
             }
             else
             {
                 return new JsonResult(new
                 {
-                    //ProductId = productId,
-                    //Count = count
                     message = "برای ثبت محصول در سبد خرید، باید وارد شوید"
                 });
             }
         }
+        #endregion
     }
 }

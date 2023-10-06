@@ -28,6 +28,13 @@ namespace EShop.Data.Repositories
         }
         #endregion
 
+        #region order detail
+        public void AddOrderDetail(OrderDetail detail)
+        {
+            _context.Add(detail);
+        }
+        #endregion
+
         #region save changes
         public void SaveChanges()
         {
