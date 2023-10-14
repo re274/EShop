@@ -26,14 +26,16 @@ namespace EShop.Web.Controllers
                 var res = _orderService.AddProductToUserOrder(userId, productId, count);
                 return new JsonResult(new
                 {
-                    message = "محصول مورد نظر با موفقیت به سبد خرید اضافه شد"
+                    message = "محصول مورد نظر با موفقیت به سبد خرید اضافه شد",
+                    status = "Added successfully"
                 });
             }
             else
             {
                 return new JsonResult(new
                 {
-                    message = "برای ثبت محصول در سبد خرید، باید وارد شوید"
+                    message = "برای ثبت محصول در سبد خرید، باید وارد شوید"و
+                    status = "MustLogin"
                 });
             }
         }

@@ -4,6 +4,19 @@
     ViewData["Title"] = "جزئیات محصول";
 }
 
+@section FooterScripts{
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function AddToCartSuccess(res) {
+            ShowMessage('اعلان', res.message);
+            if (res.status == 'MustLogin')
+                setTimeout(function () {
+                    location.replace('/login')
+                }, 3000)
+        }
+    </script>
+}
+
 <!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
     <div class="container">
@@ -63,8 +76,12 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
-                    <form action="#">
-
+                    <form data-ajax-success="AddToCartSuccess"
+                          data-ajax="true"
+                          method="get"
+                          asp-controller="Order"
+                          asp-action="AddProductToOrder">
+                        <input type="hidden" name="productId" value="@Model.Id" />
                         <h1>@Model.Title</h1>
 
                         <div class=" product_ratting">
@@ -106,7 +123,7 @@
                         </div>
                         <div class="product_variant quantity">
                             <label>تعداد</label>
-                            <input min="1" max="100" value="1" type="number">
+                            <input min="1" value="1" type="number">
                             <button class="button" type="submit">افزودن به سبد</button>
 
                         </div>
