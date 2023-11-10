@@ -106,6 +106,15 @@ namespace EShop.Web.Controllers
 
         #endregion
 
+        #region logout
+        [HttpGet("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+        #endregion
+
         #region forgot password 
 
         [HttpGet("forgot-pass")]

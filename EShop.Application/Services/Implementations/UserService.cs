@@ -17,7 +17,6 @@ namespace EShop.Application.Services.Implementations
         #endregion
 
         #region account
-
         public RegisterUserResult RegisterUser(RegisterUserViewModel register)
         {
             //check user is unique
@@ -39,7 +38,6 @@ namespace EShop.Application.Services.Implementations
 
             return RegisterUserResult.Success;
         }
-
 
         public LoginUserResult IsUserExistsForLogin(LoginUserViewModel login)
         {

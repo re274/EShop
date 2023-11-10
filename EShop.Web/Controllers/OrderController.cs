@@ -34,7 +34,7 @@ namespace EShop.Web.Controllers
             {
                 return new JsonResult(new
                 {
-                    message = "برای ثبت محصول در سبد خرید، باید وارد شوید"و
+                    message = "برای ثبت محصول در سبد خرید، باید وارد شوید",
                     status = "MustLogin"
                 });
             }
