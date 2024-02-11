@@ -11,6 +11,7 @@ namespace EShop.Domain.IRepositories
 
         #region order detail
         void AddOrderDetail(OrderDetail detail);
+        void UpdateOrderDetail(OrderDetail detail);
         #endregion
     }
 }

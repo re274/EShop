@@ -1,9 +1,6 @@
 ﻿using EShop.Application.Services.Interfaces;
 using EShop.Web.HttpContextAccessories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Security.Claims;
 
 namespace EShop.Web.Controllers
 {

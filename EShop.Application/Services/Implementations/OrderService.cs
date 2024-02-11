@@ -1,6 +1,7 @@
 ﻿using EShop.Application.Services.Interfaces;
 using EShop.Domain.Entities.ProductOrder;
 using EShop.Domain.IRepositories;
+using System.Linq;
 
 namespace EShop.Application.Services.Implementations
 {
@@ -32,13 +33,22 @@ namespace EShop.Application.Services.Implementations
         {
             var userOpenOrder = GetUserOpenOrder(userId);
 
-            var orderDetail = new OrderDetail
+            if (userOpenOrder.OrderDetails != null && userOpenOrder.OrderDetails.Any(s => s.ProductId == productId))
             {
-                ProductId = productId,
-                OrderId = userOpenOrder.Id,
-                Count = count
-            };
-            _orderRepository.AddOrderDetail(orderDetail);
+                var similarDetail = userOpenOrder.OrderDetails.SingleOrDefault(s => s.ProductId == productId);
+                similarDetail.Count += count;
+                _orderRepository.UpdateOrderDetail(similarDetail);
+            }
+            else
+            {
+                var orderDetail = new OrderDetail
+                {
+                    ProductId = productId,
+                    OrderId = userOpenOrder.Id,
+                    Count = count
+                };
+                _orderRepository.AddOrderDetail(orderDetail);
+            }
             _orderRepository.SaveChanges();
 
             return true;

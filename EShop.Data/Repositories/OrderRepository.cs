@@ -1,6 +1,7 @@
 ﻿using EShop.Data.DBContext;
 using EShop.Domain.Entities.ProductOrder;
 using EShop.Domain.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace EShop.Data.Repositories
@@ -24,7 +25,7 @@ namespace EShop.Data.Repositories
 
         public Order GetUserOpenOrder(int userId)
         {
-            return _context.Orders.SingleOrDefault(o => o.UserId == userId && !o.IsPay);
+            return _context.Orders.Include(s => s.OrderDetails).SingleOrDefault(o => o.UserId == userId && !o.IsPay);
         }
         #endregion
 
@@ -32,6 +33,11 @@ namespace EShop.Data.Repositories
         public void AddOrderDetail(OrderDetail detail)
         {
             _context.Add(detail);
+        }
+
+        public void UpdateOrderDetail(OrderDetail detail)
+        {
+            _context.Update(detail);
         }
         #endregion
 

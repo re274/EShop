@@ -29,7 +29,7 @@ namespace EShop.Domain.Entities.ProductOrder
 
         #region relations
         public User User { get; set; }
-        public ICollection<OrderDetail> OdrerDetails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
         #endregion
     }
 }
