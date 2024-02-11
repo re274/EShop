@@ -1,4 +1,5 @@
-﻿using EShop.Application.Services.Interfaces;
+﻿using EShop.Application.Security;
+using EShop.Application.Services.Interfaces;
 using EShop.Domain.Entities.Account;
 using EShop.Domain.IRepositories;
 using EShop.Domain.ViewModels.Account;
@@ -29,8 +30,8 @@ namespace EShop.Application.Services.Implementations
             //add user to database
             var user = new User
             {
-                Email = register.Email.ToLower().Trim(),
-                Password = register.Password,
+                Email = register.Email.ToLower().SanitizeText().Trim(),
+                Password = register.Password.SanitizeText(),
                 RegisterDate = DateTime.Now,
                 ActiveCode = Guid.NewGuid().ToString("N"),
             };
