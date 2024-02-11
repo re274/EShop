@@ -1,7 +1,37 @@
-﻿
+﻿@using EShop.Domain.Entities.Account;
+@model EShop.Domain.ViewModels.Account.EditUserViewModel
 @{
-    ViewData["Title"] = "EditProfile";
+    ViewData["Title"] = "ویرایش اطلاعات";
 }
 
-<h1>EditProfile</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-area="User" asp-controller="Home" asp-action="EditProfile" method="post">
 
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="@nameof(Model.UserGender)" value="@UserGender.Male" /> مرد
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="@nameof(Model.UserGender)" value="@UserGender.Female" /> زن
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>نام</label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>نام خانوادگی</label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+
+            <button class="btn btn-success">ویرایش</button>
+
+        </form>
+    </div>
+</div>

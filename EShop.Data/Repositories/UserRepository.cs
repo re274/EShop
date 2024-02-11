@@ -39,8 +39,11 @@ namespace EShop.Data.Repositories
             return _context.Users.SingleOrDefault(s => s.Email == email);
         }
 
+        public User GetUserById(int id)
+        {
+            return _context.Users.SingleOrDefault(u => u.Id == id);
+        }
         #endregion
-
 
         #region save changes
         public void SaveChanges()
@@ -48,7 +51,5 @@ namespace EShop.Data.Repositories
             _context.SaveChanges();
         }
         #endregion
-
-
     }
 }

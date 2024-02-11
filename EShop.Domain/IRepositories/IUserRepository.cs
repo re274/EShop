@@ -10,8 +10,7 @@ namespace EShop.Domain.IRepositories
         void EditUser(User user);
         bool IsUserExistsByEmail(string email);
         User GetUserByEmail(string email);
-
+        User GetUserById(int id);
         #endregion
-
     }
 }

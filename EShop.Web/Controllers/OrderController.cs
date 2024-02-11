@@ -1,4 +1,5 @@
 ﻿using EShop.Application.Services.Interfaces;
+using EShop.Web.HttpContextAccessories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace EShop.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userId = Convert.ToInt32(User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.NameIdentifier).Value);
+                var userId = User.GetUserId();
                 var res = _orderService.AddProductToUserOrder(userId, productId, count);
                 return new JsonResult(new
                 {

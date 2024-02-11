@@ -1,10 +1,5 @@
 ﻿using EShop.Domain.Entities.Account;
 using EShop.Domain.ViewModels.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EShop.Application.Services.Interfaces
 {
@@ -15,7 +10,7 @@ namespace EShop.Application.Services.Interfaces
         LoginUserResult IsUserExistsForLogin(LoginUserViewModel login);
         User GetUserByEmail(string email);
         ForgotPasswordResult ForgotPassword(ForgotPasswordViewModel forgot);
-
+        EditUserViewModel GetUserForEdit(int userId);
         #endregion
     }
 }

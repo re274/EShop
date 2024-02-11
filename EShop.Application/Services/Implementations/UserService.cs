@@ -8,8 +8,11 @@ namespace EShop.Application.Services.Implementations
 {
     public class UserService : IUserService
     {
-        #region constructor
+        #region fields
         private readonly IUserRepository _userRepository;
+        #endregion
+
+        #region constructor
         public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
@@ -71,6 +74,18 @@ namespace EShop.Application.Services.Implementations
             // send forgot email for user
 
             return ForgotPasswordResult.Success;
+        }
+
+        public EditUserViewModel GetUserForEdit(int userId)
+        {
+            var user = _userRepository.GetUserById(userId);
+            if (user == null) return null;
+            return new EditUserViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserGender = user.UserGender
+            };
         }
         #endregion
     }
