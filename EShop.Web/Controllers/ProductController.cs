@@ -14,7 +14,7 @@ namespace EShop.Web.Controllers
         #endregion
 
         [HttpGet("product/{productId}/{productTitle}")]
-        public IActionResult ProductDetail(int productId, string productTitle)
+        public IActionResult ProductDetail(int productId)
         {
             var product = _productService.GetproductDetail(productId);
             if (product == null) { return NotFound(); }
