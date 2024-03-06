@@ -41,10 +41,8 @@ namespace EShop.Application.Extensions
                     if (!Directory.Exists(thumbPath))
                         Directory.CreateDirectory(thumbPath);
 
-                    ImageOptimizer resizer = new ImageOptimizer();
-
                     if (width != null && height != null)
-                        resizer.ImageResizer(orginalPath + fileName, thumbPath + fileName, width, height);
+                        ImageOptimizer.ImageResizer(orginalPath + fileName, thumbPath + fileName, width, height);
                 }
             }
         }

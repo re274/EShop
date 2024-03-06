@@ -4,23 +4,20 @@ using SixLabors.ImageSharp.Processing;
 
 namespace EShop.Application.Utils
 {
-    public class ImageOptimizer
+    public static class ImageOptimizer
     {
-        public void ImageResizer(string inputImagePath, string outputImagePath, int? width, int? height)
+        public static void ImageResizer(string inputImagePath, string outputImagePath, int? width, int? height)
         {
             var customWidth = width ?? 100;
-
             var customHeight = height ?? 100;
 
-            using (var image = SixLabors.ImageSharp.Image.Load(inputImagePath))
-            {
-                image.Mutate(x => x.Resize(customWidth, customHeight));
+            using var image = Image.Load(inputImagePath);
+            image.Mutate(x => x.Resize(customWidth, customHeight));
 
-                image.Save(outputImagePath, new JpegEncoder
-                {
-                    Quality = 100
-                });
-            }
+            image.Save(outputImagePath, new JpegEncoder
+            {
+                Quality = 100
+            });
         }
     }
 }
