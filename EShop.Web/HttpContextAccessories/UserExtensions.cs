@@ -13,7 +13,7 @@ namespace EShop.Web.HttpContextAccessories
             {
                 return Convert.ToInt32(identifier.Value);
             }
-            return default(int);
+            return default;
         }
     }
 }
