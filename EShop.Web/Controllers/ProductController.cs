@@ -13,6 +13,7 @@ namespace EShop.Web.Controllers
         }
         #endregion
 
+        //[HttpGet("product/{productId}")]
         [HttpGet("product/{productId}/{productTitle}")]
         public IActionResult ProductDetail(int productId)
         {
